@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoricidadService } from 'src/app/services/historicidad.service';
-import { Historicidad } from 'src/app/classes/historicidad';
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -9,7 +9,7 @@ import { Historicidad } from 'src/app/classes/historicidad';
 export class TableComponent implements OnInit {
 
 
-  listdatos:Historicidad[];
+
   constructor(private _historidadService: HistoricidadService) { }
 
 
@@ -23,7 +23,7 @@ export class TableComponent implements OnInit {
     this._historidadService.getHistoricidad().subscribe(
       data=>
       {
-        this.listdatos = data;
+
         console.log('funciona')
 
       }

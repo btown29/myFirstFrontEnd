@@ -1,40 +1,41 @@
-<div class="container-fluid">
+
 
 
 <form  #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
 
-  {{ userForm.value| json}}
-
-  <input type=text name="variable" ngModel>
-  <input type=text name="altura" ngModel>
-  <input type=date name="FechaInicio" ngModel>
-  <input type=date name="FechaFinal" ngModel>
-  <input type=time name="horaInicio" ngModel>
-  <input type=time name="horaFinal" ngModel>
-  <input type=text name="estacion" ngModel>
 
 
+  <div class="d-grid gap-3 mt-3 overflow-auto" id="formulario">
 
-  <div class="d-grid gap-3 mt-5" id="formulario">
-    <div class="p-2 bg-light ">
-      <div class="container text-center">
-        <input type="button" class="btn btn-danger btn-lg" value="Buscar" type="submit" id="buscador" name="submit"/>
+    <div class="form-group">
+      <input type="button" class="btn btn-danger" type="submit" id="buscador" name="submit" value="Series de Tiempo" />
+    </div>
+
+    <div class="row mx-2 px-2 my-2 py-2">
+      <div class="form-group mx-2 my-2 px-2 py-2">
+        <app-sidebar-estacion ngModelGroup="variables" ></app-sidebar-estacion>
       </div>
     </div>
-    <div class="p-2 bg-light ">
-      <div class="container text-center">
-        <app-sidebar-estacion ></app-sidebar-estacion>
-      </div>
-    </div>
-    <div class="p-2 bg-light ">
-      <div class="container text-center">
-        <app-sidebar-fecha></app-sidebar-fecha>
+    <div class="row mx-2 px-2 my-1 py-1">
+      <div class="form-group mx-2 my-12 px-2 py-1">
+        <app-sidebar-fecha ngModelGroup="fechas"></app-sidebar-fecha>
       </div>
     </div>
   </div>
 </form>
-</div>
+
+
 <!--
+    <input type=text name="variable" ngModel>
+  <input type=text name="altura" ngModel>
+  <input type=date name="fecha_inicio" ngModel>
+  <input type=date name="fecha_final" ngModel>
+  <input type=time name="hora_inicio" ngModel>
+  <input type=time name="hora_final" ngModel>
+  <input type=text name="estacion" ngModel>
+  <ul>
+  <li>{{promedios.fecha}}</li>
+</ul>
   <div class="mb-3 px-4 align-items-center justify-content-center ">
     <div class="container-fluid text-center">
       <input type="button" class="btn btn-danger btn-lg" value="Buscar" type="submit" id="buscador" name="submit">
@@ -73,10 +74,8 @@
   </div>
   </div>
 </div>
--->
 
-<!-- Modal -->
-<div class="modal fade" id="modalAyuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalGeneral" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -116,13 +115,138 @@
 </div>
 
 
-<script>
-  $("#criterios").change(function () {
-    if($(this).val() == "2"){
-      console.log($(this).val())
-    };
+<div class="modal fade" id="modalTipo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">¿Qué son las variables?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Las variables en este filtro de búsqueda corresponden a las variables climatológicas presentes en al menos una estación de la red
+          de estaciones de monitoreo del ceazamet.
+        </p>
+        <p>
+          En esa sección se distinguen 3 tipos de variables de temperatura, ya que la medición realizada en Ceazamet corresponde a una estimación de temperatura
+          en una hora específica.
+        </p>
+        <p style="font-weight: lighter;">
+          Ej: Medición 05:00 AM posee 3 temperaturas:
+        </p>
+        <ul>
+          <li style="font-weight: lighter;">
+            Máxima Temperatura   (Máximo valor de temperatura obtenido por el sensor)
+          </li>
+          <li style="font-weight: lighter;">
+            Mínima Temperatura   (Mínimo valor de temperatura obtenido por el sensor)
+          </li>
+          <li style="font-weight: lighter;">
+            Promedio Temperatura (Valor Promedio de los registros obtenido por el sensor)
+          </li>
+        </ul>
 
-  });
-</script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<div class="modal fade" id="modalAltura" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">¿Qué son las variables?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Las variables en este filtro de búsqueda corresponden a las variables climatológicas presentes en al menos una estación de la red
+          de estaciones de monitoreo del ceazamet.
+        </p>
+        <p>
+          En esa sección se distinguen 3 tipos de variables de temperatura, ya que la medición realizada en Ceazamet corresponde a una estimación de temperatura
+          en una hora específica.
+        </p>
+        <p style="font-weight: lighter;">
+          Ej: Medición 05:00 AM posee 3 temperaturas:
+        </p>
+        <ul>
+          <li style="font-weight: lighter;">
+            Máxima Temperatura   (Máximo valor de temperatura obtenido por el sensor)
+          </li>
+          <li style="font-weight: lighter;">
+            Mínima Temperatura   (Mínimo valor de temperatura obtenido por el sensor)
+          </li>
+          <li style="font-weight: lighter;">
+            Promedio Temperatura (Valor Promedio de los registros obtenido por el sensor)
+          </li>
+        </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalFecha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Información sobre primer registro existente en Ceazamet por Estación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Fecha de Inicio</th>
+              <th scope="col">Estación</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr><td>2014-01-13 16:00:00 </td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2019-04-02 20:00:00    El Jote</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2019-01-01 00:00:00    El Tapado</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2016-08-25 20:00:00    Estero Derecho</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2016-01-01 00:00:00    Gabriela Mistral</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2019-01-01 00:00:00    La Laguna [Elqui]</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2019-01-17 18:00:00    La Polvareda [INIA]</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2019-01-01 00:00:00    Llanos de Huanta</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2017-05-16 10:00:00    Llano de Las Liebres</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2020-01-01 00:00:00    La Serena [El Romeral]</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2015-08-05 15:00:00    La Serena [Cerro Grande]</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2019-01-01 00:00:00    La Serena [CEAZA]</td><td>Andacollo [Collowara]</td></tr>
+
+
+
+
+
+
+              <tr><td>2016-01-01 00:00:00    Pan de Azucar</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2020-01-01 00:00:00    Paso Agua Negra</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2020-01-01 00:00:00    Pisco Elqui</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2017-01-01 00:00:00    Punta Colorada</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2017-01-01 00:00:00    Punta de Choros</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2016-01-01 00:00:00    Rivadavia</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2019-01-01 00:00:00    Tongoy Balsa CMET</td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2017-01-01 00:00:00    UCN Guayacan </td><td>Andacollo [Collowara]</td></tr>
+              <tr><td>2019-01-01 00:00:00    Vicuna </td><td>Andacollo [Collowara]</td></tr>
+
+          </tbody>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+-->

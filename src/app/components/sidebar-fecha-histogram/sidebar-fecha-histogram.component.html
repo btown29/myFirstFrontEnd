@@ -1,0 +1,136 @@
+<label class="variable">
+  Fecha
+</label>
+
+<button class="btn" id="qm-fechas" data-bs-toggle="modal" data-bs-target="#modalAyuda"><!--<i class="bi bi-question-circle"></i>-->
+</button>
+<br>
+
+<div class="row mt-1 p-1" >
+ <label class="tipo">Criterio de Búsqueda:</label>
+<select [(ngModel)]="criterio" name="criterio" class="form-select" id="deviceModel">
+  <option *ngFor='let element of category'  [value]="element">{{element}}</option>
+</select>
+</div>
+
+<div *ngIf="criterio == 'Customize'" class="row mt-1 mb-1 p-1">
+    <div class="row input-group pt-1 mt-2">
+      <div class="col "></div>
+        <label class="tipo" for="final">Fecha Inicial:</label>
+        <input class="form-select " type="date" [ngModel] ="dt" (ngModelChange)="dt = $event" id="Fecha Inicio" name="fecha_inicio">
+      </div>
+      <div class="row input-group pt-1 mt-2">
+        <div class="col"></div>
+        <label class="tipo" for="final">Fecha Final:</label>
+        <input class="form-select " type="date" [ngModel] ="dtf" (ngModelChange)="dtf = $event" id="Fecha Final" name="fecha_final">
+      </div>
+      <div class="row input-group pt-1 mt-2">
+        <div class="col "></div>
+        <label class="tipo"for="final">Hora Inicio:</label>
+        <input class="form-select " type="time" [ngModel] ="ht" (ngModelChange)="ht = $event" id="Hora Inicio" name="hora_inicio">
+      </div>
+      <div class="row input-group pt-1 mt-2">
+        <div class="col"></div>
+        <label class="tipo" for="final">Hora Termino:</label>
+        <input class="form-select " type="time" [ngModel] ="htf" (ngModelChange)="htf = $event" id="Hora Final" name="hora_final">
+      </div>
+  </div>
+
+
+  <div *ngIf="criterio == 'Análisis por Mes'" class="row mt-1 mb-1 p-1">
+    <div class="row mt-2 p-2" >
+      <label class="tipo">Mes:</label>
+
+      <select  name=mes class="form-select text-left"  aria-label="variables" aria-placeholder="Variable" [(ngModel)]="mesSelected">
+        <option *ngFor="let mes of meses" [value] = "mes.id">{{mes.nombre}}</option>
+      </select>
+
+    </div>
+  </div>
+
+  <div *ngIf="criterio == 'Análisis en un año'" class="row mt-1 p-1" >
+    <label class="tipo">Año:</label>
+   <select [(ngModel)]="anioSelected" class="form-select text-left" name="anio" id="anio" ria-label="variables" aria-placeholder="Variable">
+     <option *ngFor="let anio of anios" [value] = "anio.id">{{anio.nombre}}</option>
+   </select>
+   </div>
+
+
+
+
+ <!--
+
+
+    <br>
+    <div class="input-group mb-3 mt-3">
+      <label for="inicio">Fecha de Inicio:</label>
+      <br>
+      <input type="datetime-local" id="Inicio" name="Inicio">
+    </div>
+    <div class="input-group  mb-3 mt-3">
+      <label for="final">Fecha de Final:</label>
+      <input type="datetime-local" id="Final" name="Final">
+    </div>
+
+
+
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" data-bs-toggle="modal" data-bs-target="#modalFecha">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Fechas Específicas</label>
+    </div>
+
+      <div class="modal" id="modalFecha" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Fecha de Interés</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <label>Año</label>
+                <input type="checkbox" ngModel name="2014" class="btn-check" id="btncheck11" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck11">2014</label>
+
+                <input type="checkbox" ngModel name="2015" class="btn-check" id="btncheck22" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck22">2015</label>
+
+                <input type="checkbox" ngModel name="2016" class="btn-check" id="btncheck33" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck33">2016</label>
+              </div>
+              <hr class="bg-light">
+              <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <label>Mes</label>
+                <input type="checkbox" ngModel name="Enero" class="btn-check" id="btncheck44" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck44">Enero</label>
+
+                <input type="checkbox" ngModel name="Febrero" class="btn-check" id="btncheck55" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck55">Febrero</label>
+
+                <input type="checkbox" ngModel name="Marzo" class="btn-check" id="btncheck66" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck66">Marzo</label>
+              </div>
+              <hr class="bg-light">
+              <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <label>Hora</label>
+                <input type="checkbox" ngModel name="00" class="btn-check" id="btncheck77" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck77">16:00</label>
+
+                <input type="checkbox" ngModel name="01" class="btn-check" id="btncheck88" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck88">17:00</label>
+
+                <input type="checkbox" ngModel name="02" class="btn-check" id="btncheck99" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck99">18:00</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" data-dismiss="modal" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  -->

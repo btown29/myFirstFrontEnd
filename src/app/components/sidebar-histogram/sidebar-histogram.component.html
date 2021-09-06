@@ -1,0 +1,22 @@
+<form  #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+
+
+
+ <div class="d-grid gap-3 mt-3 overflow-auto" id="formulario1">
+
+   <div class="form-group">
+     <input type="button" class="btn btn-danger" type="submit" id="buscador" name="submit" value="Ver Histogramas" />
+   </div>
+
+   <div class="row mx-2 px-2 my-2 py-2">
+     <div class="form-group mx-2 my-2 px-2 py-2">
+       <app-sidebar-temperatura  ngModelGroup="variables" ></app-sidebar-temperatura>
+     </div>
+   </div>
+   <div class="row mx-2 px-2 my-1 py-1">
+     <div class="form-group mx-2 my-12 px-2 py-1">
+       <app-sidebar-fecha-histogram  ngModelGroup="fechas"></app-sidebar-fecha-histogram>
+     </div>
+   </div>
+ </div>
+</form>

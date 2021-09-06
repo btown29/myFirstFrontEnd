@@ -2,6 +2,8 @@
 
 
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { HistoricidadInputsService} from 'src/app/services/historicidad-inputs.service';
+
 
 
 declare var $: any;
@@ -9,6 +11,12 @@ declare var lat: number;
 declare var lon: number;
 declare var zoom: number;
 declare const icon: any;
+declare var variable: any;
+declare var altura: any;
+declare var hora_inicio: any;
+declare var hora_final: any;
+declare var fecha_inicio: any;
+declare var fecha_final: any;
 
 
 
@@ -16,12 +24,19 @@ declare const icon: any;
   selector: 'app-historicidad',
   templateUrl: './historicidad.component.html',
   styleUrls: ['./historicidad.component.scss']
+  //providers:[HistoricidadInputsService]
 })
 export class HistoricidadComponent implements OnInit{
 
   @ViewChild('content') content: any;
 
   //let icons: google.maps.Icon();
+  variable: "temperatura_del_suelo";
+  altura: '-0.1m';
+  hora_inicio: '05:00';
+  hora_final: '11:00';
+  fecha_inicio: '2019-10-01';
+  fecha_final: '2019,11,01';
   lat: -30.0314094;
   lon: -70.7315968;
   zoom: 8;
@@ -55,16 +70,15 @@ export class HistoricidadComponent implements OnInit{
     { title:'UCN Guayacan', lat: -29.96663, lng: -71.352844},
     { title:'Vicuna', lat: -30.038318, lng: -70.696553}];
 
+    form: any;
 
-    clickedMarker(label: string) {
-      //alert(`Nombre de la Estación: ${label}`);
-      $("#myModal").modal('show');
+    receiveMessage($event) {
+      this.form = $event
     }
-  ngOnInit() {
-
-    console.log(typeof icon)
+    constructor(){}
+    //constructor(){}
+    ngOnInit(){
   }
-
   /*
 [('Algarrobal', (-29.9988307, -70.587333)),
  ('Andacollo [Collowara]', (-30.248749, -71.065259)),

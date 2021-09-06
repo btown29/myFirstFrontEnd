@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { HistoricidadComponent } from './components/historicidad/historicidad.component'
+import { HistoricidadComponent } from './components/historicidad/historicidad.component';
 import { InterpolacionComponent } from './components/interpolacion/interpolacion.component';
+import { MapComponent } from './components/map/map.component';
 
 
 const routes: Routes = [
@@ -19,7 +19,6 @@ const routes: Routes = [
     path:'interpolacion',
     component:InterpolacionComponent
   }
-
 ];
 
 @NgModule({

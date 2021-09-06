@@ -1,0 +1,22 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="serie-tab" data-bs-toggle="tab" data-bs-target="#serie" type="button" role="tab" aria-controls="serie" aria-selected="true">Series</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="histograma-tab" data-bs-toggle="tab" data-bs-target="#histograma" type="button" role="tab" aria-controls="histograma" aria-selected="false">Histogramas</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="registro-tab" data-bs-toggle="tab" data-bs-target="#registro" type="button" role="tab" aria-controls="registro" aria-selected="false">Registros</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="serie" role="tabpanel" aria-labelledby="serie-tab">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="tab-pane fade" id="histograma" role="tabpanel" aria-labelledby="histograma-tab">
+    <app-sidebar-histogram></app-sidebar-histogram>
+  </div>
+  <div class="tab-pane fade" id="registro" role="tabpanel" aria-labelledby="registro-tab">
+    <app-sidebar-registro></app-sidebar-registro>
+  </div>
+</div>

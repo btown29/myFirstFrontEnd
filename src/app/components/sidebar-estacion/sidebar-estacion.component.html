@@ -1,35 +1,59 @@
-<label class="variable"></label>
-  <h3>Variables</h3>
+<label class="variable">
+   Variables
+</label>
 
+<button class="btn" id="qm-variables" (click)=getModalGeneral()>
+  <!--<i class="bi bi-question-circle"></i>-->
+</button>
+<br>
 
+<div class="row ">
+  <div clas="row align-items-center">
+  <label class="tipo">Tipo:</label>
+  <button class="btn" id="qm-tipo"(click)=getModalTemperatura()>
+    <!--<i class="bi bi-question-circle"></i>-->
+</button>
+</div>
+<br>
 
-    <button class="btn" id="qm-variables" data-bs-toggle="modal" data-bs-target="#modalAyuda"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-question-circle" viewBox="0 0 16 16">
-      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-      <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
-    </svg></button>
-
-    <label class="variable ">Variable:</label>
-    <!--
-    <select ngModel="selectedObjectTemperatura">
-      <option *ngFor="let lang of variablesObject" [ngValue]="lang">
-           {{lang.name}}
-       </option>
+    <select  name=temperaturas class="form-select text-left"  aria-label="variables" aria-placeholder="Variable" [(ngModel)]="tipoSelected">
+      <option *ngFor="let tipo of tipos" [value] = "tipo.id">{{tipo.nombre}}</option>
     </select>
-    -->
 
+</div>
 
-    <label class="variable ">Altura:</label>
+<div class="row mt-1 p-1" >
+  <div clas="row align-items-center">
+  <label class="tipo">Altura:</label>
+  <button class="btn" id="qm-alturas" (click)=getModalAltura() >
+    <!--<i class="bi bi-question-circle"></i>-->
+</button>
+</div>
+<br>
 
+   <select  [(ngModel)]="alturaSelected" name=alturas class="form-select text-left " aria-label="alturas" aria-placeholder="Altura">
+    <option *ngFor="let altura of alturas" [value] = "altura.id">{{altura.nombre}}</option>
 
-    <select  class="form-select" aria-label="Alturas">
-      <option selected>1.5 m</option>
-      <option value="1">0.5 m</option>
-      <option value="2">1 m</option>
-      <option value="3">2 m</option>
     </select>
+
+</div>
+
+
 
 <!--
+<div class="row mt-2 p-2">
+  <label for="minimo" class="form-label"> Temperatura Mínima:</label>
+  <input class="form-number" name="Temperatura" id="amount" type="number" value="100" min="0" max="200" placeholder="Mínima Temperatura" ngModel />
+</div>
 
+
+
+
+    <select [(ngModel)]="selectedObjectVariable" name="temperaturas" (ngModelChange)='onVariableSelected($event)'>
+      <option *ngFor="let variable of variablesObject" [value]="variable.id">
+           {{variable.variable}}
+       </option>
+    </select>
 
 <div class="input-group mb-3 mt-3 ml-3 mr-3">
   <span class="input-group-text" id="basic-addon1">Estacion</span>

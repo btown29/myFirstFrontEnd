@@ -1,6 +1,132 @@
-<!-- TEMPERATURA -->
+<label class="variable">
+  Variables
+</label>
 
-<div>
+<button class="btn" id="qm-variables" data-bs-toggle="modal" data-bs-target="#modalAyuda"><!--<i class="bi bi-question-circle"></i>-->
+</button>
+<br>
+
+<div class="row mt-2 p-2" >
+  <label class="tipo">Tipo:</label>
+
+    <select  name=temperaturas class="form-select text-left"  aria-label="variables" aria-placeholder="Variable" [(ngModel)]="tipoSelected">
+      <option *ngFor="let tipo of tipos" [value] = "tipo.id">{{tipo.nombre}}</option>
+    </select>
+
+</div>
+
+<div class="row mt-2 p-2" >
+  <label class="tipo">Altura:</label>
+
+   <select  [(ngModel)]="alturaSelected" name=alturas class="form-select text-left " aria-label="alturas" aria-placeholder="Altura">
+    <option *ngFor="let altura of alturas" [value] = "altura.id">{{altura.nombre}}</option>
+
+    </select>
+
+</div>
+
+<div class="row mt-2 p-2" >
+  <label class="tipo">Dato a Analizar:</label>
+
+   <select  [(ngModel)]="datoSelected" name="dato" class="form-select text-left " aria-label="datos" aria-placeholder="Dato">
+    <option *ngFor="let dato of datos" [value] = "dato.id">{{dato.nombre}}</option>
+
+    </select>
+
+</div>
+
+<div class="row mt-2 p-2" >
+  <label class="tipo">Criterio de Búsqueda:</label>
+
+   <select  [(ngModel)]="criterioSelected" name="criterio" class="form-select text-left " aria-label="alturas" aria-placeholder="Altura">
+    <option *ngFor="let criterio of criterios" [value] = "criterio.id">{{criterio.nombre}}</option>
+
+    </select>
+
+</div>
+
+
+<div class="row mt-2 p-2">
+ <label for="minimo" class="tipo"> Limite de Temperatura:</label>
+ <input class="form-number" [(ngModel)]="temperatura" (ngModelChange)="temperatura=$event" name="Temperatura" id="amount" type="number" value="100" min="-100" max="100"  />
+</div>
+
+
+<!--
+
+
+
+   <select [(ngModel)]="selectedObjectVariable" name="temperaturas" (ngModelChange)='onVariableSelected($event)'>
+     <option *ngFor="let variable of variablesObject" [value]="variable.id">
+          {{variable.variable}}
+      </option>
+   </select>
+
+<div class="input-group mb-3 mt-3 ml-3 mr-3">
+ <span class="input-group-text" id="basic-addon1">Estacion</span>
+ <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ej: La Serena" name="Estacion" ngModel>
+ <datalist id="datalistOptions">
+   <option value="Andacollo">
+   <option value="La Serena">
+   <option value="Coquimbo">
+ </datalist>
+</div>
+
+<div class="form-check form-switch">
+ <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" data-bs-toggle="modal" data-bs-target="#modalEstacion">
+ <label class="form-check-label" for="flexSwitchCheckDefault">Más Estaciones</label>
+</div>
+
+
+
+   <div class="modal" id="modalEstacion" tabindex="-1">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title">Búsqueda Avanzada Estaciones</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+
+
+           <div class="form-check form-check-inline" role="group" aria-label="Basic checkbox toggle button group">
+
+             <input type="checkbox" ngModel name="andacollo" class="btn-check" id="btncheck1" autocomplete="off">
+             <label class="btn btn-outline-primary" for="btncheck1">Andacollo</label>
+
+             <input type="checkbox" ngModel name="laSerena" class="btn-check" id="btncheck2" autocomplete="off">
+             <label class="btn btn-outline-primary" for="btncheck2">La Serena</label>
+
+             <input type="checkbox" ngModel name="coquimbo" class="btn-check" id="btncheck3" autocomplete="off">
+             <label class="btn btn-outline-primary" for="btncheck3">Coquimbo</label>
+
+             <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+             <label class="btn btn-outline-primary" for="btncheck4">Vicuña</label>
+
+             <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+             <label class="btn btn-outline-primary" for="btncheck5">Cachiyuyo</label>
+
+             <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+             <label class="btn btn-outline-primary" for="btncheck6">Rivadavia</label>
+
+
+           </div>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+           <button type="button" class="btn btn-primary">Guardar Cambios</button>
+         </div>
+       </div>
+     </div>
+   </div>
+   -->
+
+
+
+
+<!--
+
+
   <br>
       <label for="minimo" class="form-label"> Temperatura Mínima:</label>
       <h3></h3>
@@ -10,16 +136,6 @@
 
 
 
+
   <br>
-      <label for="maximo" class="form-label"> Temperatura Máxima:</label>
-      <h3></h3>
-      <label id="tPrice">30</label>
-
-      <input type="range" class="form-range" name="temperaturaMaxima" id="maximo" value="30" min="-50" max="50"
-          oninput="document.getElementById('tPrice').innerHTML = this.value" ngModel />
-
-
-
-
-</div>
-<!-- -->
+     TEMPERATURA -->

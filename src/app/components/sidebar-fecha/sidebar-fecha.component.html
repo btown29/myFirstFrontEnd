@@ -1,53 +1,58 @@
+<label class="variable">
+  Fecha
+</label>
 
+<button class="btn" id="qm-fechas" (click)=getModalFecha()>
+  <!--<i class="bi bi-question-circle"></i>-->
+</button>
+<br>
 
-  <div class="p-2 bg-light align-items-center">
-    <label class="fecha"></label>
-      <h3>Fecha</h3>
+<div class="row mt-1 p-1" >
+ <label class="tipo">Criterio de Búsqueda:</label>
+<select [(ngModel)]="criterio" name="criterio" class="form-select" id="deviceModel">
+  <option *ngFor='let element of category'  [value]="element">{{element}}</option>
+</select>
+</div>
 
-    <button class="btn" id="qm-fecha" data-bs-toggle="modal" data-bs-target="#modalAyuda"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-question-circle" viewBox="0 0 16 16">
-      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-      <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
-    </svg></button>
-
+<div *ngIf="criterio == 'Customize'" class="row mt-1 mb-1 p-1">
+    <div class="row input-group pt-1 mt-2">
+      <div class="col "></div>
+        <label class="tipo" for="final">Fecha Inicial:</label>
+        <input class="form-select " type="date" [ngModel] ="dt" (ngModelChange)="dt = $event" id="Fecha Inicio" name="fecha_inicio">
+      </div>
+      <div class="row input-group pt-1 mt-2">
+        <div class="col"></div>
+        <label class="tipo" for="final">Fecha Final:</label>
+        <input class="form-select " type="date" [ngModel] ="dtf" (ngModelChange)="dtf = $event" id="Fecha Final" name="fecha_final">
+      </div>
+      <div class="row input-group pt-1 mt-2">
+        <div class="col "></div>
+        <label class="tipo"for="final">Hora Inicio:</label>
+        <input class="form-select " type="time" [ngModel] ="ht" (ngModelChange)="ht = $event" id="Hora Inicio" name="hora_inicio">
+      </div>
+      <div class="row input-group pt-1 mt-2">
+        <div class="col"></div>
+        <label class="tipo" for="final">Hora Termino:</label>
+        <input class="form-select " type="time" [ngModel] ="htf" (ngModelChange)="htf = $event" id="Hora Final" name="hora_final">
+      </div>
   </div>
-    <div class="p-2 bg-light text-left">
-      <label class="variable ">Selección Fecha:</label>
-    </div>
-    <div class="p-2 bg-light text-left">
 
-      <select name="criterios de seleccion" class="form-control" id="criterios" aria-label="criterios de fecha" required>
-        <option value="0">Customize</option>
-        <option value="1">Últimos 15 Días</option>
-        <option value="2">Estación Verano</option>
-        <option value="3">Estación Otoño</option>
-        <option value="4">Estación Invierno</option>
-        <option value="5">Estación Primavera</option>
-        <option value="6">Análisis por Mes</option>
-        <option value="7">Análisis por Años</option>
+
+  <div *ngIf="criterio == 'Análisis por Mes'" class="row mt-1 mb-1 p-1">
+    <div class="row mt-2 p-2" >
+      <label class="tipo">Mes:</label>
+
+      <select  name=mes class="form-select text-left"  aria-label="variables" aria-placeholder="Variable" [(ngModel)]="mesSelected">
+        <option *ngFor="let mes of meses" [value]= "mes.id">{{mes.nombre}}</option>
       </select>
 
-    </div>
 
-    <div class="p-2 bg-light text-left">
-      <div class="input-group  mb-3 mt-3">
-        <div class="text-left">
-          <label for="final">Fecha Inicial:</label>
-          <input type="date" id="Fecha Inicio" name="FechaInicial">
-        </div>
-        <div class="text-left">
-          <label for="final">Fecha Final:</label>
-          <input type="date" id="Fecha Final" name="FechaFinal">
-        </div>
-        <div class="text-left">
-          <label for="final">Hora Inicio:</label>
-          <input type="time" id="Hora Inicio" name="Inicio">
-        </div>
-        <div class="text-left">
-          <label for="final">Hora Termino:</label>
-          <input type="time" id="Hora Final" name="Final">
-        </div>
-      </div>
+
     </div>
+  </div>
+
+
+
 
 
 

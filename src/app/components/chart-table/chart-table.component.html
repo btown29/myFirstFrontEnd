@@ -1,0 +1,44 @@
+<div class="modal-header">
+  <h4 class="modal-title">Estacion: {{ title }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Temperatura</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let group of data">
+          <td>
+            {{group.fecha}}
+          </td>
+          <td>
+            <strong>{{group.registro}} <span> &#176;C</span></strong>
+          </td>
+
+        </tr>
+
+<!--
+      <tr *ngFor=" let fecha of dato.fecha">
+        <td>{{fecha}}</td>
+      </tr>
+      <tr *ngFor=" let registro of dato.registro">
+        <td>{{registro}}</td>
+      </tr>
+    -->
+
+    </tbody>
+  </table>
+
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+</div>
+
+

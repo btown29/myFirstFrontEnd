@@ -3,19 +3,36 @@
 }
 #buscador{
 
-  border: 1;
+  width: 100%;
 
+}
+#formulario{
+  height:550px;
 }
 .mb-3{
   padding: 2rem;
   color:#9B1C15;
 }
 
+.row{
+  border-radius: 4px;
+  border-color: #9B1C15;
+  border-style: solid;
+  background-color: rgb(237, 238, 238);
+  border-width: thin;
+}
 
+.modal{
+  display: block !important; /* I added this to see the modal, you don't need this */
+}
 
-select,
-input {
-  margin-bottom: 20px;
+/* Important part */
+.modal-dialog{
+  overflow-y: initial !important
+}
+.modal-body{
+  height: 80vh;
+  overflow-y: auto;
 }
 
 
